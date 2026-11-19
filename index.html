@@ -121,4 +121,8 @@ list.addEventListener('click',e=>{const button=e.target.closest('[data-idx]');if
 audio.addEventListener('play',()=>{pending=false;sync()});audio.addEventListener('pause',()=>{pending=false;sync()});audio.addEventListener('waiting',()=>{if(current>=0){pending=true;status.textContent='음악을 불러오는 중';}});audio.addEventListener('playing',()=>{pending=false;sync()});audio.addEventListener('loadedmetadata',()=>{$('time-total').textContent=fmt(audio.duration)});audio.addEventListener('durationchange',()=>{$('time-total').textContent=fmt(audio.duration)});audio.addEventListener('timeupdate',()=>{$('time-now').textContent=fmt(audio.currentTime);if(Number.isFinite(audio.duration)&&audio.duration>0){const v=audio.currentTime/audio.duration*1000;seek.value=v;seek.style.setProperty('--progress',`${v/10}%`);}});audio.addEventListener('ended',()=>choose((current+1)%songs.length));audio.addEventListener('error',()=>{if(current>=0){pending=false;status.textContent='음원 연결을 확인해 주세요';syncControlsOnly();}});seek.addEventListener('input',()=>{if(Number.isFinite(audio.duration)&&audio.duration>0){audio.currentTime=Number(seek.value)/1000*audio.duration;seek.style.setProperty('--progress',`${Number(seek.value)/10}%`);}});
 render();
 </script>
+<<<<<<< Updated upstream
 </body></html>
+=======
+</body></html>
+>>>>>>> Stashed changes
