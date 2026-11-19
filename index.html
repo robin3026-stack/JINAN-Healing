@@ -1,505 +1,124 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="ko">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
-  <title>진안치유거리 | 마음을 담은 소원</title>
-  <!-- Tailwind CSS 로드 -->
-  <script src="https://cdn.tailwindcss.com"></script>
-  <!-- Google Fonts: Noto Sans KR & Inter -->
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Noto+Sans+KR:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
-
-  <script>
-    tailwind.config = {
-      theme: {
-        extend: {
-          fontFamily: {
-            sans: ['"Noto Sans KR"', '"Inter"', 'sans-serif'],
-          },
-          colors: {
-            cream: {
-              50: '#FDFBF7',
-              100: '#F7F3EB',
-              200: '#EFE8DA',
-            },
-            sage: {
-              50: '#F2F6F3',
-              100: '#E2ECE5',
-              200: '#C5D9CB',
-              400: '#7FA38B',
-              500: '#5C836A',
-              600: '#476853',
-              700: '#375141',
-            },
-            clay: {
-              400: '#D49A7A',
-              500: '#C27D59',
-            }
-          }
-        }
-      }
-    };
-  </script>
-
-  <style>
-    /* 기본 스크롤바 숨김 및 부드러운 터치 스크롤 */
-    * {
-      -webkit-tap-highlight-color: transparent;
-      box-sizing: border-box;
-    }
-    body {
-      background-color: #EAE5DC;
-      margin: 0;
-      padding: 0;
-    }
-    .no-scrollbar::-webkit-scrollbar {
-      display: none;
-    }
-    .no-scrollbar {
-      -ms-overflow-style: none;
-      scrollbar-width: none;
-    }
-
-    /* 이퀄라이저 애니메이션 (재생 중인 아이콘 표시) */
-    @keyframes eqBounce {
-      0%, 100% { transform: scaleY(0.25); }
-      50% { transform: scaleY(1); }
-    }
-    .eq-bar {
-      transform-origin: bottom;
-      animation: eqBounce 0.85s ease-in-out infinite;
-    }
-    .eq-bar:nth-child(1) { animation-delay: 0.0s; }
-    .eq-bar:nth-child(2) { animation-delay: 0.22s; }
-    .eq-bar:nth-child(3) { animation-delay: 0.44s; }
-    .eq-bar:nth-child(4) { animation-delay: 0.15s; }
-
-    .paused .eq-bar {
-      animation-play-state: paused;
-      transform: scaleY(0.35);
-    }
-
-    /* 프로그레스 바 커스텀 스타일 */
-    input[type="range"].audio-progress {
-      -webkit-appearance: none;
-      appearance: none;
-      background: transparent;
-      cursor: pointer;
-    }
-    input[type="range"].audio-progress::-webkit-slider-runnable-track {
-      height: 5px;
-      border-radius: 999px;
-    }
-    input[type="range"].audio-progress::-webkit-slider-thumb {
-      -webkit-appearance: none;
-      appearance: none;
-      height: 14px;
-      width: 14px;
-      border-radius: 50%;
-      background: #476853;
-      margin-top: -4.5px;
-      box-shadow: 0 1px 4px rgba(0, 0, 0, 0.25);
-      transition: transform 0.15s ease;
-    }
-    input[type="range"].audio-progress:active::-webkit-slider-thumb {
-      transform: scale(1.25);
-    }
-  </style>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#102921">
+<meta name="description" content="진안 치유 음악 아카이브 — 진안의 풍경과 감정을 담은 열두 곡의 음악">
+<title>진안 치유 음악 | JINAN HEALING SOUND</title>
+<style>
+:root{--ink:#192b25;--muted:#718077;--line:#e8ece8;--forest:#1b4535;--cream:#f8f8f3;--gold:#d5b981;--shadow:0 12px 34px rgba(26,50,38,.065)}
+*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;font-family:system-ui,-apple-system,"Apple SD Gothic Neo","Malgun Gothic",sans-serif;background:#f1f2ed;color:var(--ink);-webkit-tap-highlight-color:transparent}button,input{font:inherit}button{cursor:pointer}button:focus-visible,input:focus-visible{outline:3px solid #b7c891;outline-offset:3px}.app{max-width:520px;min-height:100vh;margin:auto;background:var(--cream);padding-bottom:calc(125px + env(safe-area-inset-bottom));box-shadow:0 0 55px #1b34210b;overflow:hidden}
+.hero{position:relative;isolation:isolate;background:linear-gradient(140deg,#112c25 4%,#275643 68%,#44644d 100%);color:#fff;min-height:369px;padding:27px 25px 34px;overflow:hidden}.hero:before{content:"";position:absolute;z-index:-1;width:350px;height:350px;border:1px solid #ffffff1d;border-radius:50%;top:-152px;right:-173px;box-shadow:0 0 0 47px #ffffff08,0 0 0 96px #ffffff07}.hero:after{content:"";position:absolute;z-index:-1;width:230px;height:230px;border-radius:50%;background:#e6bb7440;filter:blur(80px);right:-65px;bottom:-70px}.brand{display:flex;align-items:center;justify-content:space-between;gap:12px}.brand-mark{display:flex;align-items:center;gap:9px;font-weight:800;letter-spacing:.16em;font-size:10px}.brand-mark svg{width:23px;height:23px}.head-badge{border:1px solid #ffffff36;border-radius:50px;padding:7px 11px;font-size:10px;letter-spacing:.08em;color:#dce8dc}.eyebrow{font-size:11px;letter-spacing:.22em;color:#ddcba2;font-weight:750;margin:41px 0 10px}.hero h1{font-size:clamp(31px,8.5vw,43px);letter-spacing:-.065em;line-height:1.27;font-weight:750;margin:0}.hero h1 em{font-style:normal;color:#f0d8a4}.hero-sub{margin:14px 0 23px;color:#d7e3d9;font-size:13px;line-height:1.85;font-weight:400}.hero-bottom{display:flex;align-items:center;gap:13px}.hero-play{display:flex;align-items:center;justify-content:center;background:#f4e7cc;color:#274636;border:0;width:51px;height:51px;flex-shrink:0;border-radius:50%;box-shadow:0 9px 22px #0c251f44}.hero-play svg{width:19px;height:19px}.hero-play-caption{font-size:13px;font-weight:750}.hero-play-caption span{display:block;font-size:11px;font-weight:450;color:#c7d8cb;margin-top:3px}.hero-orbit{position:absolute;right:-71px;top:86px;width:222px;height:222px;border:1px solid #ffffff20;border-radius:50%;pointer-events:none}.hero-orbit:before,.hero-orbit:after{content:"";position:absolute;border:1px solid #ffffff23;border-radius:50%;inset:24px}.hero-orbit:after{inset:55px;background:radial-gradient(circle,#e2c68c 0 9px,#234b3b 10px 14px,#d8bd88 15px 17px,transparent 18px);border:23px solid #ffffff0e}
+.content{padding:26px 19px 30px}.section-top{display:flex;justify-content:space-between;align-items:end;padding:0 4px;margin-bottom:17px}.section-kicker{color:#809083;font-weight:800;letter-spacing:.19em;font-size:10px}.section-title{font-size:23px;letter-spacing:-.045em;margin:4px 0 0}.count{color:#7e8c80;font-size:12px;margin-bottom:3px}.tracklist{display:grid;gap:10px}.track{position:relative;display:flex;align-items:center;gap:13px;text-align:left;padding:11px 13px;border:1px solid #e8eae3;background:#fff;border-radius:18px;width:100%;min-height:82px;box-shadow:0 4px 16px #293b2e08;transition:background .2s,border-color .2s,transform .2s}.track:active{transform:scale(.99)}.track.active{background:#edf4ed;border-color:#94b09b;box-shadow:0 6px 23px #2b654017}.cover{--c1:#557f61;--c2:#e6d6a4;position:relative;display:grid;place-items:center;flex:0 0 59px;width:59px;height:59px;overflow:hidden;border-radius:13px;background:linear-gradient(140deg,var(--c1),var(--c2));color:#fff}.cover:before{content:"";position:absolute;width:75px;height:75px;border-radius:50%;border:1px solid #ffffff5c;right:-36px;top:-34px;box-shadow:0 0 0 11px #ffffff17,0 0 0 24px #ffffff0c}.cover:after{content:"";position:absolute;inset:auto -13px -32px 10px;height:52px;transform:rotate(-21deg);border-radius:50%;background:#ffffff29}.cover-emoji{font-size:27px;position:relative;z-index:1;filter:drop-shadow(0 2px 4px #0002)}.track-details{flex:1;min-width:0}.track-no{color:#87978b;font-size:10px;font-weight:800;letter-spacing:.11em}.track-title{font-size:14px;line-height:1.45;font-weight:750;letter-spacing:-.035em;margin:5px 0 0;word-break:keep-all}.track-tail{display:grid;place-items:center;flex:0 0 28px;color:#9ba89d}.track.active .track-tail{color:#2e6848}.track-tail svg{width:19px;height:19px}.eq{height:20px;display:flex;align-items:end;gap:3px}.eq i{display:block;width:3px;height:8px;border-radius:4px;background:currentColor;animation:equalize .8s infinite ease-in-out alternate}.eq i:nth-child(2){height:17px;animation-delay:-.35s}.eq i:nth-child(3){height:11px;animation-delay:-.2s}.eq i:nth-child(4){height:15px;animation-delay:-.6s}.eq.paused i{animation-play-state:paused}.closing{text-align:center;color:#99a59a;font-size:11px;letter-spacing:.11em;margin:28px 0 0}
+.player-wrap{position:fixed;z-index:5;bottom:0;left:0;right:0;pointer-events:none}.player{max-width:520px;margin:auto;background:#fff;border-top:1px solid #e4e9e2;box-shadow:0 -12px 35px #13271d15;padding:13px 18px calc(15px + env(safe-area-inset-bottom));pointer-events:auto}.player-progress{display:flex;align-items:center;gap:9px;margin-bottom:12px}.time{font-size:10px;font-variant-numeric:tabular-nums;color:#829086;min-width:32px}.time:last-child{text-align:right}.seek{flex:1;appearance:none;-webkit-appearance:none;height:4px;border:0;border-radius:10px;background:linear-gradient(to right,#376f51 0 var(--progress,0%),#e5ebe4 var(--progress,0%) 100%);cursor:pointer}.seek::-webkit-slider-thumb{appearance:none;width:12px;height:12px;border-radius:50%;background:#356b4e;box-shadow:0 0 0 4px #356b4e18}.seek::-moz-range-thumb{width:12px;height:12px;border:0;border-radius:50%;background:#356b4e}.player-main{display:flex;align-items:center;gap:11px}.player-cover{flex:0 0 43px;width:43px;height:43px;border-radius:11px;background:linear-gradient(140deg,#285844,#dbceaa);display:grid;place-items:center;color:#fff;font-size:21px}.now-text{flex:1;min-width:0}.now-meta{color:#4d7960;font-size:10px;font-weight:750;letter-spacing:.04em;margin-bottom:4px}.now-title{font-size:13px;font-weight:800;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}.control{background:none;border:none;padding:4px;color:#3e5f4a;display:grid;place-items:center;flex:0 0 30px}.control svg{width:21px;height:21px}.control.primary{border-radius:50%;width:44px;height:44px;flex:0 0 44px;background:#244f3b;color:#fff;box-shadow:0 6px 12px #1d4a312a}.control.primary svg{width:21px;height:21px}.control:disabled{opacity:.3;cursor:not-allowed}.sr-only{position:absolute;clip:rect(0,0,0,0);width:1px;height:1px;overflow:hidden;white-space:nowrap}
+@keyframes equalize{to{height:4px}}@media(prefers-reduced-motion:reduce){*,*:before,*:after{animation-duration:.01ms!important;transition:none!important;scroll-behavior:auto!important}}@media(min-width:700px){.app{margin:24px auto;border-radius:22px;min-height:calc(100vh - 48px)}.player{border-radius:17px 17px 0 0}.hero{border-radius:22px 22px 0 0}}@media(max-width:360px){.hero{padding-left:21px;padding-right:21px}.content{padding-left:13px;padding-right:13px}.track{gap:10px;padding:9px}.cover{flex-basis:53px;width:53px;height:53px}.track-title{font-size:13px}.player{padding-left:12px;padding-right:12px}.control{flex-basis:25px}}
+</style>
 </head>
-<body class="min-h-screen flex justify-center items-start sm:py-6 font-sans text-stone-800">
-
-  <!-- 모바일 전용 뷰포트 컨테이너 (데스크톱에서는 최대 430px 폰 프레임 형태로 중앙 정렬) -->
-  <div id="app-shell" class="relative w-full max-w-[430px] min-h-screen sm:min-h-[844px] sm:max-h-[880px] bg-cream-50 sm:rounded-[38px] sm:shadow-[0_24px_60px_-15px_rgba(45,55,48,0.22)] sm:border-[6px] sm:border-stone-800/90 flex flex-col overflow-hidden">
-
-    <!-- 상단 상태 표시줄 장식 (데스크톱 미리보기 시 모바일 감성 강화) -->
-    <div class="hidden sm:flex justify-between items-center px-7 pt-3 pb-1 text-[11px] font-medium text-stone-500 select-none bg-cream-50">
-      <span>9:41</span>
-      <div class="w-20 h-4 bg-stone-800 rounded-full"></div>
-      <div class="flex items-center gap-1.5">
-        <span class="inline-block w-3 h-2.5 rounded-xs bg-stone-500"></span>
-        <span class="inline-block w-4 h-2.5 rounded-xs border border-stone-500 p-[1px]"><span class="block w-full h-full bg-stone-500"></span></span>
-      </div>
-    </div>
-
-    <!-- 헤더 영역 -->
-    <header class="px-5 pt-5 pb-4 bg-gradient-to-b from-sage-100/75 via-cream-50 to-cream-50 border-b border-sage-200/40 shrink-0">
-      <div class="flex items-center justify-between mb-2">
-        <span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-sage-500/10 text-sage-700 text-[11px] font-semibold tracking-wide">
-          <!-- NFC 웨이브 미니 아이콘 -->
-          <svg class="w-3.5 h-3.5 text-sage-600" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
-            <path d="M6 8.32a7.43 7.43 0 0 1 0 7.36" />
-            <path d="M9.46 6.21a11.76 11.76 0 0 1 0 11.58" />
-            <path d="M12.91 4.1a15.91 15.91 0 0 1 .01 15.8" />
-            <path d="M16.37 2a20.16 20.16 0 0 1 0 20" />
-          </svg>
-          JINAN NFC SOUND ARCHIVE
-        </span>
-
-        <!-- 현재 오디오 모드 배지 (캔버스 미리듣기 / GitHub 실제 음원 구분 표시) -->
-        <span id="audio-mode-badge" class="text-[11px] font-semibold px-2.5 py-1 rounded-full bg-sage-500/15 text-sage-700">
-          치유 사운드 아카이브
-        </span>
-      </div>
-
-      <div>
-        <h1 class="text-[22px] font-bold text-stone-800 tracking-tight leading-snug">
-          JINAN Healing Music
-        </h1>
-        <p class="text-[13.5px] text-stone-500 mt-0.5 font-normal">
-          원하는 음악 아이콘을 터치해 감상하세요
-        </p>
-      </div>
-    </header>
-
-    <!-- 메인 스크롤 영역: 2열 14곡 음악 아이콘 그리드 -->
-    <main class="flex-1 overflow-y-auto no-scrollbar px-4 pt-4 pb-36">
-      <!-- 안내 배너 -->
-      <div class="mb-4 px-3.5 py-2.5 rounded-2xl bg-sage-50 border border-sage-200/70 flex items-center justify-between">
-        <div class="flex items-center gap-2.5">
-          <div class="w-8 h-8 rounded-xl bg-sage-500 text-white flex items-center justify-center shrink-0 shadow-xs">
-            <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-              <path d="M9 18V5l12-2v13" stroke-linecap="round" stroke-linejoin="round"/>
-              <circle cx="6" cy="18" r="3"/>
-              <circle cx="18" cy="16" r="3"/>
-            </svg>
-          </div>
-          <div>
-            <p class="text-xs font-semibold text-sage-700">이야기, 음악이 되다 · 전곡 14선</p>
-            <p class="text-[11px] text-stone-500">아이콘을 누르면 즉시 사운드가 재생됩니다</p>
-          </div>
-        </div>
-        <span class="text-[11px] font-semibold text-sage-600 bg-white px-2 py-1 rounded-lg border border-sage-200/60">14곡</span>
-      </div>
-
-      <!-- 14개 음악 아이콘 카드 그리드 (JS로 동적 렌더링) -->
-      <div id="tracks-grid" class="grid grid-cols-2 gap-3">
-        <!-- 카드 아이템이 여기에 삽입됩니다 -->
-      </div>
-
-      <!-- 하단 여백 및 저작권/안내 문구 -->
-      <div class="mt-7 text-center px-4">
-        <p class="text-[11px] text-stone-400 leading-relaxed">
-          이야기, 음악이 되다 · JINAN Healing Sound Archive<br/>
-          이어폰을 착용하시면 더욱 깊은 울림을 느끼실 수 있습니다.
-        </p>
-      </div>
-    </main>
-
-    <!-- 실제 오디오 엘리먼트 (GitHub .m4a URL 연결 시 사용) -->
-    <audio id="real-audio-player" preload="none"></audio>
-
-    <!-- 하단 고정(Sticky) 미니 플레이어 바 -->
-    <div id="mini-player" class="absolute bottom-0 inset-x-0 bg-white/95 backdrop-blur-md border-t border-sage-200/80 px-4 pt-2.5 pb-4 sm:pb-5 shadow-[0_-10px_30px_rgba(40,54,44,0.08)] transition-all duration-300 z-20">
-      <!-- 프로그레스 바 & 시간 표시 -->
-      <div class="flex items-center gap-2.5 mb-2">
-        <span id="current-time" class="text-[10.5px] font-medium text-stone-400 w-8 text-right tabular-nums">0:00</span>
-        <input
-          id="progress-slider"
-          type="range"
-          min="0"
-          max="100"
-          value="0"
-          aria-label="재생 위치 조절"
-          class="audio-progress flex-1 h-1.5 bg-sage-100 rounded-full"
-        />
-        <span id="total-duration" class="text-[10.5px] font-medium text-stone-400 w-8 tabular-nums">0:30</span>
-      </div>
-
-      <!-- 곡 정보 및 컨트롤 버튼 -->
-      <div class="flex items-center justify-between gap-3">
-        <!-- 현재 선택된 곡 썸네일/아이콘 + 제목 -->
-        <div class="flex items-center gap-3 min-w-0 flex-1">
-          <div id="player-icon-box" class="w-11 h-11 rounded-2xl bg-sage-100 text-sage-600 flex items-center justify-center shrink-0 transition-colors">
-            <!-- 현재 선택된 곡의 아이콘이 표시됨 -->
-            <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-              <path d="M9 18V5l12-2v13" stroke-linecap="round" stroke-linejoin="round"/>
-              <circle cx="6" cy="18" r="3"/>
-              <circle cx="18" cy="16" r="3"/>
-            </svg>
-          </div>
-          <div class="min-w-0 flex-1">
-            <div class="flex items-center gap-1.5">
-              <span id="player-track-num" class="text-[10px] font-bold px-1.5 py-0.5 rounded bg-sage-100 text-sage-700">READY</span>
-              <span id="player-subtitle" class="text-[11px] text-stone-400 truncate">아이콘을 선택해 주세요</span>
-            </div>
-            <p id="player-title" class="text-[14.5px] font-bold text-stone-800 truncate mt-0.5">
-              재생할 곡을 터치하세요
-            </p>
-          </div>
-        </div>
-
-        <!-- 이전곡 / 재생·일시정지 / 다음곡 버튼 -->
-        <div class="flex items-center gap-1.5 shrink-0">
-          <button
-            id="btn-prev"
-            type="button"
-            aria-label="이전 곡"
-            class="w-9 h-9 rounded-full flex items-center justify-center text-stone-500 hover:bg-sage-50 active:scale-90 transition"
-          >
-            <svg class="w-4 h-4" viewBox="0 0 24 24" fill="currentColor">
-              <path d="M6 6h2v12H6zm3.5 6l8.5 6V6z"/>
-            </svg>
-          </button>
-
-          <button
-            id="btn-play-pause"
-            type="button"
-            aria-label="재생 또는 일시정지"
-            class="w-11 h-11 rounded-full bg-sage-600 hover:bg-sage-700 text-white flex items-center justify-center shadow-md shadow-sage-600/25 active:scale-95 transition"
-          >
-            <!-- 재생 아이콘 -->
-            <svg id="icon-play" class="w-5 h-5 translate-x-0.5" viewBox="0 0 24 24" fill="currentColor">
-              <path d="M8 5v14l11-7z"/>
-            </svg>
-            <!-- 일시정지 아이콘 (기본 숨김) -->
-            <svg id="icon-pause" class="w-5 h-5 hidden" viewBox="0 0 24 24" fill="currentColor">
-              <path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z"/>
-            </svg>
-          </button>
-
-          <button
-            id="btn-next"
-            type="button"
-            aria-label="다음 곡"
-            class="w-9 h-9 rounded-full flex items-center justify-center text-stone-500 hover:bg-sage-50 active:scale-90 transition"
-          >
-            <svg class="w-4 h-4" viewBox="0 0 24 24" fill="currentColor">
-              <path d="M6 18l8.5-6L6 6v12zM16 6v12h2V6h-2z"/>
-            </svg>
-          </button>
-        </div>
-      </div>
-    </div>
-
-    <!-- 안내 메시지 토스트 (alert 대체용) -->
-    <div id="toast-banner" class="pointer-events-none opacity-0 transition-opacity duration-300 absolute top-20 inset-x-6 bg-stone-800/90 text-white text-xs py-2.5 px-4 rounded-xl text-center shadow-lg z-30">
-      메시지
-    </div>
-
-  </div>
-
-  <script>
-    /**
-     * ============================================================================
-     * [관리자용 음원 경로 설정 (코드 내부에서만 관리)]
-     * ============================================================================
-     * - 배포(GitHub Pages 업로드) 시에는 같은 폴더의 `.m4a` 파일을 자동으로 불러옵니다.
-     * - 로컬/캔버스 미리보기에서 외부 GitHub 음원을 직접 연결하려면 아래
-     *   ADMIN_GITHUB_BASE_URL 변수에 본인 GitHub Pages 주소만 입력해 두시면 됩니다.
-     * ============================================================================
-     */
-    const ADMIN_GITHUB_BASE_URL = ""; // 예: "https://아이디.github.io/JINAN-Healing/"
-
-    const TRACKS = [
-      {
-        id: 1,
-        number: "01",
-        title: "마음을 담은 소원",
-        tag: "TITLE · 따뜻한 울림",
-        fileName: "1. 마음을 담은 소원 (TITLE).m4a",
-        accentBg: "bg-amber-50",
-        accentText: "text-amber-700",
-        iconBg: "bg-amber-100/80",
-        notes: [261.63, 329.63, 392.00, 493.88, 523.25],
-        iconSvg: `<svg class="w-6 h-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg>`
-      },
-      {
-        id: 2,
-        number: "02",
-        title: "몽환",
-        tag: "꿈결 같은 선율",
-        fileName: "2. 몽환.m4a",
-        accentBg: "bg-indigo-50",
-        accentText: "text-indigo-700",
-        iconBg: "bg-indigo-100/80",
-        notes: [293.66, 349.23, 440.00, 523.25, 659.25],
-        iconSvg: `<svg class="w-6 h-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z"/><path d="M19 3v4"/><path d="M21 5h-4"/></svg>`
-      },
-      {
-        id: 3,
-        number: "03",
-        title: "한의 울림",
-        tag: "깊은 여운과 위로",
-        fileName: "3. 한의 울림.m4a",
-        accentBg: "bg-stone-100",
-        accentText: "text-stone-700",
-        iconBg: "bg-stone-200/80",
-        notes: [220.00, 261.63, 329.63, 392.00, 440.00],
-        iconSvg: `<svg class="w-6 h-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M2 12h2"/><path d="M6 8v8"/><path d="M10 4v16"/><path d="M14 7v10"/><path d="M18 9v6"/><path d="M22 12h-2"/></svg>`
-      },
-      {
-        id: 4,
-        number: "04",
-        title: "빨간색 트위스트",
-        tag: "경쾌한 발걸음",
-        fileName: "4. 빨간색 트위스트.m4a",
-        accentBg: "bg-rose-50",
-        accentText: "text-rose-700",
-        iconBg: "bg-rose-100/80",
-        notes: [329.63, 392.00, 493.88, 587.33, 659.25],
-        iconSvg: `<svg class="w-6 h-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="3"/><path d="M12 3v3"/><path d="M12 18v3"/></svg>`
-      },
-      {
-        id: 5,
-        number: "05",
-        title: "골목길 호기심",
-        tag: "산책의 설렘",
-        fileName: "5. 골목길 호기심.m4a",
-        accentBg: "bg-orange-50",
-        accentText: "text-orange-700",
-        iconBg: "bg-orange-100/80",
-        notes: [349.23, 440.00, 523.25, 659.25, 698.46],
-        iconSvg: `<svg class="w-6 h-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polygon points="16.24 7.76 14.12 14.12 7.76 16.24 9.88 9.88 16.24 7.76"/></svg>`
-      },
-      {
-        id: 6,
-        number: "06",
-        title: "해지는 담장의 오후",
-        tag: "노을빛 회상",
-        fileName: "6. 해지는 담장의 오후.m4a",
-        accentBg: "bg-amber-50",
-        accentText: "text-orange-800",
-        iconBg: "bg-amber-200/60",
-        notes: [246.94, 329.63, 392.00, 493.88, 587.33],
-        iconSvg: `<svg class="w-6 h-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 10V2"/><path d="m4.93 10.93 1.41 1.41"/><path d="M2 18h2"/><path d="M20 18h2"/><path d="m19.07 10.93-1.41 1.41"/><path d="M22 22H2"/><path d="M16 18a4 4 0 0 0-8 0"/></svg>`
-      },
-      {
-        id: 7,
-        number: "07",
-        title: "숲속의 아침",
-        tag: "맑은 피톤치드",
-        fileName: "7. 숲속의 아침.m4a",
-        accentBg: "bg-emerald-50",
-        accentText: "text-emerald-700",
-        iconBg: "bg-emerald-100/80",
-        notes: [261.63, 293.66, 392.00, 440.00, 523.25],
-        iconSvg: `<svg class="w-6 h-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M11 20A7 7 0 0 1 9.8 6.1C15.5 5 17 4.48 19 2c1 2 2 4.18 2 8 0 5.5-4.78 10-10 10Z"/><path d="M2 21c0-3 1.85-5.36 5.08-6C9.5 14.52 12 13 13 12"/></svg>`
-      },
-      {
-        id: 8,
-        number: "08",
-        title: "바람의 노래",
-        tag: "산들바람 휴식",
-        fileName: "8. 바람의 노래.m4a",
-        accentBg: "bg-teal-50",
-        accentText: "text-teal-700",
-        iconBg: "bg-teal-100/80",
-        notes: [293.66, 329.63, 440.00, 493.88, 587.33],
-        iconSvg: `<svg class="w-6 h-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M17.7 7.7a2.5 2.5 0 1 1 1.8 4.3H2"/><path d="M9.6 4.6A2 2 0 1 1 11 8H2"/><path d="M12.6 19.4A2 2 0 1 0 14 16H2"/></svg>`
-      },
-      {
-        id: 9,
-        number: "09",
-        title: "별빛 아래서",
-        tag: "고요한 밤하늘",
-        fileName: "9. 별빛 아래서.m4a",
-        accentBg: "bg-sky-50",
-        accentText: "text-sky-700",
-        iconBg: "bg-sky-100/80",
-        notes: [392.00, 493.88, 587.33, 659.25, 783.99],
-        iconSvg: `<svg class="w-6 h-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>`
-      },
-      {
-        id: 10,
-        number: "10",
-        title: "치유의 기도",
-        tag: "평온한 숨고르기",
-        fileName: "10. 치유의 기도.m4a",
-        accentBg: "bg-sage-50",
-        accentText: "text-sage-700",
-        iconBg: "bg-sage-100",
-        notes: [261.63, 349.23, 440.00, 523.25, 587.33],
-        iconSvg: `<svg class="w-6 h-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2v4"/><path d="m6.8 14-3.5 2"/><path d="m20.7 16-3.5-2"/><path d="M6.8 10 3.3 8"/><path d="m20.7 8-3.5 2"/><circle cx="12" cy="12" r="5"/></svg>`
-      },
-      {
-        id: 11,
-        number: "11",
-        title: "우리의 삶이 음악이 될 때",
-        tag: "TITLE · 함께 부르는 노래",
-        fileName: "11. 우리의 삶이 음악이 될 때 (TITLE).m4a",
-        accentBg: "bg-lime-50",
-        accentText: "text-lime-800",
-        iconBg: "bg-lime-100/80",
-        notes: [329.63, 440.00, 493.88, 659.25, 739.99],
-        iconSvg: `<svg class="w-6 h-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18V5l12-2v13"/><circle cx="6" cy="18" r="3"/><circle cx="18" cy="16" r="3"/></svg>`
-      },
-      {
-        id: 12,
-        number: "12",
-        title: "우리가 사랑한 순간들",
-        tag: "소중한 기억의 조각",
-        fileName: "12. 우리가 사랑한 순간들.m4a",
-        accentBg: "bg-pink-50",
-        accentText: "text-pink-700",
-        iconBg: "bg-pink-100/80",
-        notes: [293.66, 369.99, 440.00, 554.37, 587.33],
-        iconSvg: `<svg class="w-6 h-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4.05 3 5.5l7 7Z"/></svg>`
-      },
-      {
-        id: 13,
-        number: "13",
-        title: "고요한 산책",
-        tag: "발끝에 닿는 자연",
-        fileName: "13. 고요한 산책.m4a",
-        accentBg: "bg-cyan-50",
-        accentText: "text-cyan-700",
-        iconBg: "bg-cyan-100/80",
-        notes: [220.00, 293.66, 329.63, 440.00, 493.88],
-        iconSvg: `<svg class="w-6 h-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 17l6-6 4 4 8-8"/><path d="M17 7h4v4"/></svg>`
-      },
-      {
-        id: 14,
-        number: "14",
-        title: "희망의 빛",
-        tag: "내일을 여는 선율",
-        fileName: "14. 희망의 빛.m4a",
-        accentBg: "bg-yellow-50",
-        accentText: "text-yellow-700",
-        iconBg: "bg-yellow-100/80",
-        notes: [261.63, 329.63, 392.00, 523.25, 659.25],
-        iconSvg: `<svg class="w-6 h-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v2"/><path d="M12 20v2"/><path d="m4.93 4.93 1.41 1.41"/><path d="m17.66 17.66 1.41 1.41"/><path d="M2 12h2"/><path d="M20 12h2"/><path d="m6.34 17.66-1.41 1.41"/><path d="m19.07 4.93-1.41 1.41"/></svg>`
-      }
-    ];
-
-    // 상태 관리 변수
-    let currentTrackIndex = -1;
-    let isPlaying = false;
-    let usingFallbackSynth = false;
-
-    // Web Audio API 미리듣기 엔진 상태
-    let audioCtx = null;
-    let synthInterval = null;
-    let progressTimer = null;
-    let elapsedSeconds = 0;
-    const PREVIEW_DURATION = 30;
-
-    // DOM 참조
-    const tracksGridEl = document.getElementById('tracks-grid');
-    const realAudioEl = document.getElementById('real-audio-player');
-    const playerTitleEl = document.getElementById('player-title');
-    const playerSubtitleEl = document.getElementById('player-subtitle');
-    const playerTrackNumEl = document.getElementById('player-track-num');
-    const playerIconBoxEl = document.getElementById('player-icon-box');
-    const btnPlayPause = document.getElementById('btn-play-pause');
-    const iconPlay = document.getElementById('icon-play');
-    const iconPause = document.getElementById('icon-pause');
-    const btnPrev = document.getElementById('btn-prev');
-    const btnNext = document.getElementById('btn-next');
-    const progressSlider = document.getElementById('progress-slider');
-    const currentTimeEl = document.getElementById('current-time');
-    const totalDurationEl = document.getElementById('total-duration');
-    const audioModeBadge = document.getElementById('audio-mode-badge');
-    const toastBanner = document.getElementById('toast-banner');
-
-    // GitHub 기본 주소에서 실제 인코딩된 오디오 URL 생성
-    function buildTrackAudioUrl(track) {
-      const encodedFile = encodeURIComponent(track.fileName);
-      // GitHub Pages 환경에서는 같은 저장소 내 음원 파일을 상대 경로로 즉시 로드
-      if (window.location.hostname.endsWith('github.io') || !ADMIN_GITHUB_BASE_URL) {
-        return `./${encodedFile}`;
-      }
-      const cleanBase = ADMIN_GITHUB_BASE_URL.trim().replace(/\/+$/, '');
-      return `${cleanBase}/${encodedFile}`;
-    }
+<body>
+<div class="app">
+<header class="hero">
+  <div class="hero-orbit" aria-hidden="true"></div>
+  <div class="brand"><div class="brand-mark"><svg viewBox="0 0 24 24" fill="none" stroke="#e7d49e" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 20V5M12 15c-5 0-8-3-8-7 5 0 8 3 8 7ZM12 12c0-5 3-8 8-8 0 5-3 8-8 8Z"/></svg>JINAN HEALING SOUND</div><span class="head-badge">MUSIC ARCHIVE</span></div>
+  <p class="eyebrow">THE SOUND OF JINAN</p>
+  <h1>진안의 풍경을<br><em>음악으로 듣다.</em></h1>
+  <p class="hero-sub">마음에 머무는 열두 개의 선율.<br>당신의 오늘에 작은 쉼표가 되기를.</p>
+  <div class="hero-bottom"><button class="hero-play" id="hero-play" aria-label="첫 번째 곡 재생"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="m8 5 12 7-12 7V5Z"/></svg></button><div class="hero-play-caption">음악 감상 시작하기<span>첫 번째 곡부터 천천히</span></div></div>
+</header>
+<main class="content"><div class="section-top"><div><span class="section-kicker">CURATED SOUNDS</span><h2 class="section-title">마음을 위한 플레이리스트</h2></div><div class="count">12 TRACKS</div></div><div class="tracklist" id="tracklist" aria-label="진안 치유 음악 12곡"></div><p class="closing">JINAN · MUSIC FOR YOUR MOMENTS</p></main>
+</div>
+<div class="player-wrap"><section class="player" aria-label="음악 재생기"><div class="player-progress"><span class="time" id="time-now">0:00</span><input class="seek" type="range" min="0" max="1000" value="0" id="seek" aria-label="재생 위치 조정"><span class="time" id="time-total">0:00</span></div><div class="player-main"><div class="player-cover" id="player-cover" aria-hidden="true">♫</div><div class="now-text" aria-live="polite"><div class="now-meta" id="status">음악을 선택해 주세요</div><div class="now-title" id="now-title">진안 치유 음악 아카이브</div></div><button class="control" id="prev" aria-label="이전 곡"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M5 5h2v14H5zm3 7 11-7v14z"/></svg></button><button class="control primary" id="toggle" aria-label="재생"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="m8 5 12 7-12 7V5Z"/></svg></button><button class="control" id="next" aria-label="다음 곡"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17 5h2v14h-2zM5 5l11 7-11 7z"/></svg></button></div></section></div>
+<audio id="audio" preload="metadata"></audio>
+<script>
+const songs = [
+  {
+    "no": "01",
+    "title": "마음을 담은 소원",
+    "icon": "🌿",
+    "url": "https://github.com/robin3026-stack/JINAN-Healing/raw/refs/heads/main/1.%20%EB%A7%88%EC%9D%8C%EC%9D%84%20%EB%8B%B4%EC%9D%80%20%EC%86%8C%EC%9B%90%20(TITLE).m4a"
+  },
+  {
+    "no": "02",
+    "title": "몽환",
+    "icon": "🌙",
+    "url": "https://github.com/robin3026-stack/JINAN-Healing/raw/refs/heads/main/2.%20%EB%AA%BD%ED%99%98.m4a"
+  },
+  {
+    "no": "03",
+    "title": "한의 울림",
+    "icon": "🎐",
+    "url": "https://github.com/robin3026-stack/JINAN-Healing/raw/refs/heads/main/3.%20%ED%95%9C%EC%9D%98%20%EC%9A%B8%EB%A6%BC.m4a"
+  },
+  {
+    "no": "04",
+    "title": "빨간색 트위스트",
+    "icon": "💃",
+    "url": "https://github.com/robin3026-stack/JINAN-Healing/raw/refs/heads/main/4.%20%EB%B9%A8%EA%B0%84%EC%83%89%20%ED%8A%B8%EC%9C%84%EC%8A%A4%ED%8A%B8.m4a"
+  },
+  {
+    "no": "05",
+    "title": "골목길 호기심",
+    "icon": "👣",
+    "url": "https://github.com/robin3026-stack/JINAN-Healing/raw/refs/heads/main/5.%20%EA%B3%A8%EB%AA%A9%EA%B8%B8%20%ED%98%B8%EA%B8%B0%EC%8B%AC.m4a"
+  },
+  {
+    "no": "06",
+    "title": "해지는 담장의 오후",
+    "icon": "🌇",
+    "url": "https://github.com/robin3026-stack/JINAN-Healing/raw/refs/heads/main/6.%20%ED%95%B4%EC%A7%80%EB%8A%94%20%EB%8B%B4%EC%9E%A5%EC%9D%98%20%EC%98%A4%ED%9B%84.m4a"
+  },
+  {
+    "no": "07",
+    "title": "흥겨운 춤사위",
+    "icon": "🎶",
+    "url": "https://github.com/robin3026-stack/JINAN-Healing/raw/refs/heads/main/7.%20%ED%9D%A5%EA%B2%A8%EC%9A%B4%20%EC%B6%A4%EC%82%AC%EC%9C%84.m4a"
+  },
+  {
+    "no": "08",
+    "title": "이웃에게는 소란, 우리에게는 낭만",
+    "icon": "🏡",
+    "url": "https://github.com/robin3026-stack/JINAN-Healing/raw/refs/heads/main/8.%20%EC%9D%B4%EC%9B%83%EC%97%90%EA%B2%8C%EB%8A%94%20%EC%86%8C%EB%9E%80,%20%EC%9A%B0%EB%A6%AC%EC%97%90%EA%B2%8C%EB%8A%94%20%EB%82%AD%EB%A7%8C!.m4a"
+  },
+  {
+    "no": "09",
+    "title": "축제의 날",
+    "icon": "🎉",
+    "url": "https://github.com/robin3026-stack/JINAN-Healing/raw/refs/heads/main/9.%20%EC%B6%95%EC%A0%9C%EC%9D%98%20%EB%82%A0.m4a"
+  },
+  {
+    "no": "10",
+    "title": "치유의 기도",
+    "icon": "🕊️",
+    "url": "https://github.com/robin3026-stack/JINAN-Healing/raw/refs/heads/main/10.%20%EC%B9%98%EC%9C%A0%EC%9D%98%20%EA%B8%B0%EB%8F%84.m4a"
+  },
+  {
+    "no": "11",
+    "title": "우리의 삶이 음악이 될 때",
+    "icon": "🎼",
+    "url": "https://github.com/robin3026-stack/JINAN-Healing/raw/refs/heads/main/11.%20%EC%9A%B0%EB%A6%AC%EC%9D%98%20%EC%82%B6%EC%9D%B4%20%EC%9D%8C%EC%95%85%EC%9D%B4%20%EB%90%A0%EB%95%8C%20(TITLE).m4a"
+  },
+  {
+    "no": "12",
+    "title": "우리가 사랑한 진안의 가을 밤",
+    "icon": "🍂",
+    "url": "https://github.com/robin3026-stack/JINAN-Healing/raw/refs/heads/main/12.%20%EC%9A%B0%EB%A6%AC%EA%B0%80%20%EC%82%AC%EB%9E%91%ED%95%9C%20%EC%A7%84%EC%95%88%EC%9D%98%20%EA%B0%80%EC%9D%84%20%EB%B0%A4(The%20Jinan%20Autumn%20Night%20We%20Loved).m4a"
+  }
+];
+const palettes=[['#648a6c','#d8c69a'],['#3d547a','#bf9ca6'],['#6683a5','#d4c9c1'],['#bd594c','#e7ae77'],['#75698c','#acb6a0'],['#b17661','#e3c9aa'],['#6b6798','#cfa6c4'],['#52887c','#e0c2a4'],['#b7656e','#edc17d'],['#8b9ca1','#d4d8b6'],['#6a8092','#c5b3a1'],['#a47d58','#e0bf82']];
+const $=id=>document.getElementById(id);
+const audio=$('audio'),list=$('tracklist'),toggle=$('toggle'),status=$('status'),nowTitle=$('now-title'),cover=$('player-cover'),seek=$('seek');
+let current=-1, pending=false;
+const icons={play:'<path d="m8 5 12 7-12 7V5Z"/>',pause:'<path d="M7 5h4v14H7zm6 0h4v14h-4z"/>',arrow:'<path d="m9 5 7 7-7 7" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>'};
+const svg=path=>`<svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">${path}</svg>`;
+function render(){list.innerHTML=songs.map((s,i)=>{const active=i===current;const playing=active&&!audio.paused;const p=palettes[i];return `<button class="track ${active?'active':''}" data-idx="${i}" aria-label="${s.no}번 ${s.title}${active?', 선택됨':''}" ${active?'aria-current="true"':''}><span class="cover" style="--c1:${p[0]};--c2:${p[1]}"><span class="cover-emoji">${s.icon}</span></span><span class="track-details"><span class="track-no">TRACK ${s.no}</span><span class="track-title" style="display:block">${s.title}</span></span><span class="track-tail">${active?`<span class="eq ${playing?'':'paused'}" aria-hidden="true"><i></i><i></i><i></i><i></i></span>`:svg(icons.arrow)}</span></button>`}).join('');}
+function sync(){const playing=!audio.paused&&current>=0;toggle.innerHTML=svg(playing?icons.pause:icons.play);toggle.setAttribute('aria-label',playing?'일시정지':'재생');if(current>=0&&!pending){status.textContent=playing?'재생 중':'일시정지';}render();}
+function choose(i){if(i<0||i>=songs.length)return;if(current===i){togglePlayback();return;}current=i;const s=songs[i],p=palettes[i];audio.src=s.url;audio.load();cover.textContent=s.icon;cover.style.background=`linear-gradient(140deg,${p[0]},${p[1]})`;nowTitle.textContent=s.title;status.textContent='음악을 불러오는 중';pending=true;seek.value=0;seek.style.setProperty('--progress','0%');$('time-now').textContent='0:00';$('time-total').textContent='0:00';render();attemptPlay();}
+async function attemptPlay(){try{await audio.play();pending=false;sync();}catch(e){pending=false;status.textContent=e.name==='NotAllowedError'?'재생 버튼을 다시 눌러주세요':'음원을 재생할 수 없습니다';syncControlsOnly();}}
+function syncControlsOnly(){const playing=!audio.paused&&current>=0;toggle.innerHTML=svg(playing?icons.pause:icons.play);toggle.setAttribute('aria-label',playing?'일시정지':'재생');render();}
+function togglePlayback(){if(current===-1){choose(0);return;}if(audio.paused){pending=true;status.textContent='음악을 불러오는 중';attemptPlay();}else{audio.pause();}}
+function fmt(sec){if(!Number.isFinite(sec)||sec<0)return '0:00';return `${Math.floor(sec/60)}:${String(Math.floor(sec%60)).padStart(2,'0')}`;}
+list.addEventListener('click',e=>{const button=e.target.closest('[data-idx]');if(button)choose(Number(button.dataset.idx));});$('hero-play').addEventListener('click',()=>choose(0));toggle.addEventListener('click',togglePlayback);$('prev').addEventListener('click',()=>{if(current<0)choose(0);else if(audio.currentTime>3){audio.currentTime=0}else choose((current-1+songs.length)%songs.length)});$('next').addEventListener('click',()=>choose(current<0?0:(current+1)%songs.length));
+audio.addEventListener('play',()=>{pending=false;sync()});audio.addEventListener('pause',()=>{pending=false;sync()});audio.addEventListener('waiting',()=>{if(current>=0){pending=true;status.textContent='음악을 불러오는 중';}});audio.addEventListener('playing',()=>{pending=false;sync()});audio.addEventListener('loadedmetadata',()=>{$('time-total').textContent=fmt(audio.duration)});audio.addEventListener('durationchange',()=>{$('time-total').textContent=fmt(audio.duration)});audio.addEventListener('timeupdate',()=>{$('time-now').textContent=fmt(audio.currentTime);if(Number.isFinite(audio.duration)&&audio.duration>0){const v=audio.currentTime/audio.duration*1000;seek.value=v;seek.style.setProperty('--progress',`${v/10}%`);}});audio.addEventListener('ended',()=>choose((current+1)%songs.length));audio.addEventListener('error',()=>{if(current>=0){pending=false;status.textContent='음원 연결을 확인해 주세요';syncControlsOnly();}});seek.addEventListener('input',()=>{if(Number.isFinite(audio.duration)&&audio.duration>0){audio.currentTime=Number(seek.value)/1000*audio.duration;seek.style.setProperty('--progress',`${Number(seek.value)/10}%`);}});
+render();
+</script>
+</body></html>
